@@ -33,8 +33,11 @@ function Preview() {
   return (
     <div>
       <h1>Apple google_images</h1>
-    </div>
+      import Preview from "./pages/Preview.jsx";
+    <h2>{data.images_results[0].title}</h2>
+    <img src={data.images_results[0].original} width="700" />
+    <p>Sumber: {data.images_results[0].source}</p>
+  </div>
   );
 }
-
 export default Preview;
