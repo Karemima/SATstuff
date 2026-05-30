@@ -3,6 +3,11 @@ import { useEffect, useState } from "react";
 function Preview() {
   const [data, setData] = useState(null);
 
+  const API_KEY =
+    "a16115a57129311bddedaa7acd2c09e331aff1847299b795fe6459dceb603dbb";
+
+  const ENDPOINT = "https://serpapi.com/search";
+
   const params = {
     engine: "google_images",
     q: "Apple",
@@ -10,9 +15,14 @@ function Preview() {
   };
 
   useEffect(() => {
-    const queryString = new URLSearchParams(params).toString();
+    const queryString = new URLSearchParams({
+      ...params,
+      api_key: API_KEY,
+    }).toString();
 
-    fetch(`/api/search?${queryString}`)
+    const serpUrl = `${ENDPOINT}?${queryString}`;
+
+    fetch("https://corsproxy.io/?" + encodeURIComponent(serpUrl))
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
