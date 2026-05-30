@@ -1,5 +1,8 @@
 import Preview from "./pages/Preview.jsx";
-function App(){
-  return <Preview.jsx/>
+import "./App.css";
+
+function App() {
+  return <Preview />;
 }
+
 export default App;
